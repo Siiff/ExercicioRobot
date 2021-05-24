@@ -1226,10 +1226,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scripts:
-  - {fileID: 4900000, guid: 85d74dc89a1089e40a4e1a8593ad6a2f, type: 3}
+  - {fileID: 4900000, guid: b16a7a826746d9f418cf1d7556fe1c25, type: 3}
+  - {fileID: 4900000, guid: 7d0bb2bd5aa67554f8768f37ac6aa9f9, type: 3}
   autoReset: 1
   tickOn: 0
   sourceInfos:
+  - isFoldout: 1
+    breakPoints: 
+    breakPointStatuses: 
+    collapsedLines: 
+    btScript: 
   - isFoldout: 1
     breakPoints: 
     breakPointStatuses: 
