@@ -56,6 +56,7 @@ public class AI : MonoBehaviour
 
 	//Metodos do Wander.BT, Patrol.BT e Attack.BT//
 	//Pegando o destino//
+	//Esse é o pickdestinantion do patrol, o outro é aleatório//
 	[Task]
 	public void PickDestination(int x, int z)
 	{
@@ -88,6 +89,7 @@ public class AI : MonoBehaviour
 	[Task]
 	public void TargetPlayer()
 	{
+		//setando o player cm alvo//
 		target = player.transform.position;
 		Task.current.Succeed();
 	}
@@ -95,11 +97,12 @@ public class AI : MonoBehaviour
 	[Task]
 	public bool Fire()
 	{
+		//disparando as balas quando o player for visto//
 		GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
 		bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 2000);
 		return true;
 	}
-	//Metodo de buscar o player//
+	//esse Metodo faz o droid olhar ao redor aleatóriamente//
 	[Task]
 	public void LookAtTarget()
 	{
@@ -114,12 +117,14 @@ public class AI : MonoBehaviour
 			Task.current.Succeed();
 		}
 	}
+
 	//Metodo de Vendo o player//
 	[Task]
 	bool SeePlayer()
 	{
 		Vector3 distance = player.transform.position - this.transform.position;
 		RaycastHit hit;
+		//Se tiver uma parede no caminho, bloqueia o resto do script//
 		bool seeWall = false; Debug.DrawRay(this.transform.position, distance, Color.red);
 		if (Physics.Raycast(this.transform.position, distance, out hit))
 		{
