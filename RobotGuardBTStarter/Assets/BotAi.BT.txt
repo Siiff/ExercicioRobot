@@ -1,0 +1,34 @@
+//Raiz//
+tree("Root")
+		parallel 
+			repeat mute tree("Patrol")
+			repeat mute tree("Dead")
+//Patrulha//
+tree("Patrol")
+		fallback 
+			tree("Attack")
+			while IsHealthLessThan(40.0)
+				fallback
+					tree("Wander")
+//Ataca//
+tree("Attack")
+	while SeePlayer
+		sequence
+			TargetPlayer
+			LookAtTarget
+			Wait(0.2)
+			Fire
+//Vaga pelo cenario//
+tree("Wander")
+	sequence
+		PickRandomDestination
+		MoveToDestination
+//Morte//
+tree("Dead")
+	sequence
+		IsHealthLessThan(0.1)
+		Explode
+
+
+
+//Script de AI do bot, executa em paralelo as ações//
